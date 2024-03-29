@@ -7,8 +7,8 @@ class Animal {
   private int numberOfLegs;
   
   // animal has two abstract methods
-  this.speak();
-  this.attack();
+  public void speak();
+  public void attack();
 
   //the animal class has two constructors
   public Aminal(){
@@ -36,3 +36,43 @@ class Animal {
     System.out.println("Name: " + this.name, " Number of Legs: " + this.numberOfLegs);
   }
 }
+
+// Create a child class that extends the parent class animal
+class Dog extends Animal{
+  // add new fields that are specific to the dog class
+  String breed;
+
+  // the dog class has one constructor
+  public Dog(String name, int numberOfLegs, String breed){
+    super(name, numberOfLegs);
+    this.breed = breed;
+  }
+
+  //override the speak and attack methods
+  @Override public void speak(){
+    System.out.println("WOOF");
+  }
+  @Override public void attack(){
+    System.out.println("Biting");
+  }
+  @Override public void displayInformation(){
+    System.out.println(super.displayInformation + " Breed: " + this.breed);
+  }
+}
+
+//main class
+public class Main{
+  public static void main(String[] args){
+    // create instance of animal
+    Animal animal1 = new Animal();
+    Animal animal2 = new Animal("Frogger", 4);
+
+    // create instance of subclass
+    Dog dog1 = new Dog("Fido", 4, "Lab");
+
+    //display information
+    animal2.displayInformation();
+    dog1.displayInformation();
+  }
+}
+
